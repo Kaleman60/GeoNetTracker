@@ -23,7 +23,7 @@ GeoNetTracker es una herramienta que captura tráfico de red saliente, extrae di
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/GeoNetTracker.git
+git clone https://github.com/Kaleman60/GeoNetTracker.git
 cd GeoNetTracker
 ```
 
@@ -58,12 +58,31 @@ MY_LON = -3.703790  # Longitud de tu ubicación
 
 ## Uso
 
-### Ejecutar con sudo (recomendado)
+### Orden de ejecución completo
 
 ```bash
+# 1. Instalar dependencias (solo una vez)
+pip install --break-system-packages scapy folium requests
+
+# 2. Configurar tu ubicación (editar main.py)
+MY_LAT = 40.416775   # Tu latitud
+MY_LON = -3.703790   # Tu longitud
+
+# 3. Ejecutar el script
 sudo python3 main.py
+
+# 4. Ver el mapa generado
+firefox network_map.html
 ```
 
+### Método alternativo (con permisos persistentes)
+
+```bash
+sudo chown root:root main.py
+sudo chmod u+s main.py
+sudo chmod +x main.py
+./main.py
+```
 
 El script:
 1. Capturará tráfico de red saliente durante ~60 segundos
@@ -81,6 +100,25 @@ firefox network_map.html
 # o
 google-chrome network_map.html
 ```
+
+## Preguntas Frecuentes
+
+### ¿La ubicación es en tiempo real o aproximada?
+
+La **aproximada geolocalización es**. Se basa en la IP pública del dispositivo, no usa GPS. Muestra la ubicación del servidor/ISP asociado a esa IP (ciudad, país). No es en tiempo real ni precisa a nivel de calle.
+
+### ¿Solo funciona con la IP de mi dispositivo?
+
+Sí. La herramienta captura el tráfico que **sale** de tu dispositivo, mostrando:
+- IPs de sitios web que visitas
+- Servidores de aplicaciones
+- APIs a las que se conectan tus apps
+- Servidores DNS
+- Otros dispositivos de red
+
+### ¿Muestra los países donde se conecta mi dispositivo?
+
+Sí. El mapa genera líneas desde tu ubicación hacia las IPs externas que tu dispositivo contacta, indicando el país y ciudad de cada conexión.
 
 ## Estructura del proyecto
 
