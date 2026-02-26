@@ -108,6 +108,7 @@ class NetworkTracker:
     def get_geolocation(self, ip):
         """
         Obtiene la geolocalización de una IP usando la API.
+        Incluye información del propietario/ISP de la IP.
 
         Args:
             ip: Dirección IP a geolocalizar
@@ -128,7 +129,9 @@ class NetworkTracker:
                         'lat': data.get('lat'),
                         'lon': data.get('lon'),
                         'isp': data.get('isp', 'Unknown'),
-                        'asn': data.get('as', 'Unknown')
+                        'asn': data.get('as', 'Unknown'),
+                        'org': data.get('org', 'Unknown'),
+                        'timezone': data.get('timezone', 'Unknown')
                     }
         except requests.RequestException as e:
             print(f"Error consultando IP {ip}: {e}")
@@ -163,15 +166,17 @@ class NetworkTracker:
         # Agregar marcador para cada IP geolocalizada
         for data in geo_data:
             if data and data['lat'] and data['lon']:
-                # Marcador para la IP
-                popup_html = f"""
-                <b>IP:</b> {data['ip']}<br>
-                <b>País:</b> {data['country']}<br>
-                <b>Ciudad:</b> {data['city']}<br>
-                <b>Región:</b> {data['region']}<br>
-                <b>ISP:</b> {data['isp']}<br>
-                <b>ASN:</b> {data['asn']}
-                """
+        # Marcador para la IP
+        popup_html = f"""
+        <b>IP:</b> {data['ip']}<br>
+        <b>País:</b> {data['country']}<br>
+        <b>Ciudad:</b> {data['city']}<br>
+        <b>Región:</b> {data['region']}<br>
+        <b>Propietario/Org:</b> {data.get('org', 'Unknown')}<br>
+        <b>ISP:</b> {data['isp']}<br>
+        <b>ASN:</b> {data['asn']}<br>
+        <b>Zona Horaria:</b> {data.get('timezone', 'Unknown')}
+        """
 
                 folium.Marker(
                     location=[data['lat'], data['lon']],
