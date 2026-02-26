@@ -58,19 +58,12 @@ MY_LON = -3.703790  # Longitud de tu ubicación
 
 ## Uso
 
-### Método 1: Ejecutar con sudo (recomendado)
+### Ejecutar con sudo (recomendado)
 
 ```bash
 sudo python3 main.py
 ```
 
-### Método 2: Dar permisos de root al script (alternativo)
-
-```bash
-sudo chown root:root main.py
-sudo chmod +s main.py
-./main.py
-```
 
 El script:
 1. Capturará tráfico de red saliente durante ~60 segundos
