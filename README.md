@@ -10,8 +10,12 @@ GeoNetTracker es una herramienta que captura tráfico de red saliente, extrae di
 
 - Captura de tráfico de red saliente usando Scapy
 - Geolocalización de IPs mediante API gratuita (ip-api.com)
-- Mapa interactivo con Folium
+- **Detección de protocolos y puertos** (HTTPS, SSH, FTP, DNS, MySQL, etc.)
+- **Líneas de conexión coloreadas** según el servicio
+- **Mapa de calor de intensidad** para visualizar volumen de tráfico por región
 - Visualización de conexiones en mapa mundial
+- Información del propietario/ISP de cada IP
+- Popup interactivo con detalles de cada conexión
 
 ## Requisitos
 
@@ -119,6 +123,40 @@ Sí. La herramienta captura el tráfico que **sale** de tu dispositivo, mostrand
 ### ¿Muestra los países donde se conecta mi dispositivo?
 
 Sí. El mapa genera líneas desde tu ubicación hacia las IPs externas que tu dispositivo contacta, indicando el país y ciudad de cada conexión.
+
+## Nuevas Mejoras
+
+### v2.0 - Detección de Protocolos y Puertos
+
+- Identificación de servicios por puerto: HTTPS (443), HTTP (80), SSH (22), FTP (21), SMTP (25), DNS (53), MySQL (3306), PostgreSQL (5432), MongoDB (27017), RDP (3389)
+- Líneas de conexión coloreadas según el tipo de servicio
+- Marcadores con iconos diferenciados por protocolo
+- Popup con información detallada del servicio
+
+### v2.1 - Mapa de Calor de Intensidad
+
+- Capa de calor superpuesta al mapa
+- Visualización del volumen de tráfico por región
+- Gradiente de colores: azul (bajo) → rojo (alto)
+- Identificación rápida de zonas con mayor actividad de red
+- Leyenda actualizada con interpretación del heatmap
+
+### v2.2 - Información de Propietario
+
+- Consultas WHOIS automáticas via API
+- Muestra el propietario/organización del servidor
+- Información del ISP (Internet Service Provider)
+- Número de sistema autónomo (ASN)
+- Zona horaria del servidor
+
+### v2.3 - Detección de Tráfico Malicioso
+
+- **Detección de puertos maliciosos**: Identifica conexiones a puertos conocidos por malware (Metasploit, NetBus, SubSeven, Back Orifice, etc.)
+- **Alertas de puertos sensibles**: Detecta conexiones a servicios sensibles (SSH, RDP, SMB, Telnet, bases de datos)
+- **Análisis de países de alto riesgo**: Identifica conexiones a países con alta actividad de amenazas (China, Rusia, Corea del Norte, Iran, etc.)
+- **Niveles de riesgo**: Clasifica conexiones en ALTO, MEDIO y BAJO riesgo
+- **Visualización en mapa**: Marcadores rojos para amenazas de alto riesgo, naranjas para medio riesgo
+- **Resumen en consola**: Muestra estadísticas de amenazas detectadas al finalizar el escaneo
 
 ## Estructura del proyecto
 
