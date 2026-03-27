@@ -22,31 +22,31 @@ import requests
 # ============================================================
 # CONFIGURACIÓN - Ajusta estas coordenadas a tu ubicación
 # ============================================================
-MY_LAT = 40.416775   # Latitud de tu ubicación (ej: Madrid)
-MY_LON = -3.703790   # Longitud de tu ubicación (ej: Madrid)
+MY_LAT = 40.416775  # Latitud de tu ubicación (ej: Madrid)
+MY_LON = -3.703790  # Longitud de tu ubicación (ej: Madrid)
 
 # Configuración de captura
 CAPTURE_DURATION = 60  # Duración de captura en segundos
-PACKET_COUNT = 1000    # Número máximo de paquetes a capturar
+PACKET_COUNT = 1000  # Número máximo de paquetes a capturar
 
 # URL de la API de geolocalización (gratuita) - en español
 GEO_API_URL = "http://ip-api.com/json/?lang=es"
 
 # Colores para servicios/puertos
 SERVICE_COLORS = {
-    443: {'color': 'green', 'name': 'HTTPS', 'icon': 'lock'},
-    80: {'color': 'lightgreen', 'name': 'HTTP', 'icon': 'globe'},
-    22: {'color': 'orange', 'name': 'SSH', 'icon': 'terminal'},
-    21: {'color': 'purple', 'name': 'FTP', 'icon': 'folder'},
-    25: {'color': 'darkred', 'name': 'SMTP', 'icon': 'envelope'},
-    53: {'color': 'cadetblue', 'name': 'DNS', 'icon': 'book'},
-    3306: {'color': 'pink', 'name': 'MySQL', 'icon': 'database'},
-    5432: {'color': 'lightblue', 'name': 'PostgreSQL', 'icon': 'database'},
-    27017: {'color': 'gray', 'name': 'MongoDB', 'icon': 'database'},
-    3389: {'color': 'red', 'name': 'RDP', 'icon': 'desktop'},
+    443: {"color": "green", "name": "HTTPS", "icon": "lock"},
+    80: {"color": "lightgreen", "name": "HTTP", "icon": "globe"},
+    22: {"color": "orange", "name": "SSH", "icon": "terminal"},
+    21: {"color": "purple", "name": "FTP", "icon": "folder"},
+    25: {"color": "darkred", "name": "SMTP", "icon": "envelope"},
+    53: {"color": "cadetblue", "name": "DNS", "icon": "book"},
+    3306: {"color": "pink", "name": "MySQL", "icon": "database"},
+    5432: {"color": "lightblue", "name": "PostgreSQL", "icon": "database"},
+    27017: {"color": "gray", "name": "MongoDB", "icon": "database"},
+    3389: {"color": "red", "name": "RDP", "icon": "desktop"},
 }
 
-DEFAULT_SERVICE = {'color': 'blue', 'name': 'Otro', 'icon': 'network-wired'}
+DEFAULT_SERVICE = {"color": "blue", "name": "Otro", "icon": "network-wired"}
 
 # ============================================================
 # DETECCIÓN DE TRÁFICO MALICIOSO
@@ -54,60 +54,60 @@ DEFAULT_SERVICE = {'color': 'blue', 'name': 'Otro', 'icon': 'network-wired'}
 
 # Puertos comúnmente usados por malware
 MALICIOUS_PORTS = {
-    4444: {'name': 'Metasploit', 'risk': 'HIGH'},
-    5555: {'name': 'Android ADB/DroidJack', 'risk': 'HIGH'},
-    8080: {'name': 'Proxy HTTP/Tomcat', 'risk': 'MEDIUM'},
-    3128: {'name': 'Proxy Squid', 'risk': 'MEDIUM'},
-    1337: {'name': 'Leet Port (Common)', 'risk': 'LOW'},
-    31337: {'name': 'Back Orifice', 'risk': 'HIGH'},
-    12345: {'name': 'NetBus', 'risk': 'HIGH'},
-    27374: {'name': 'SubSeven', 'risk': 'HIGH'},
-    1234: {'name': 'Kuang2/Virus', 'risk': 'HIGH'},
-    9001: {'name': 'Tor ORPort', 'risk': 'MEDIUM'},
-    9050: {'name': 'Tor SOCKS', 'risk': 'MEDIUM'},
-    6667: {'name': 'IRC (Common Bot)', 'risk': 'MEDIUM'},
-    6891: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6892: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6893: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6894: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6895: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6896: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6897: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6898: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6899: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6900: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
-    6901: {'name': 'P2P/ZeuS', 'risk': 'HIGH'},
+    4444: {"name": "Metasploit", "risk": "HIGH"},
+    5555: {"name": "Android ADB/DroidJack", "risk": "HIGH"},
+    8080: {"name": "Proxy HTTP/Tomcat", "risk": "MEDIUM"},
+    3128: {"name": "Proxy Squid", "risk": "MEDIUM"},
+    1337: {"name": "Leet Port (Common)", "risk": "LOW"},
+    31337: {"name": "Back Orifice", "risk": "HIGH"},
+    12345: {"name": "NetBus", "risk": "HIGH"},
+    27374: {"name": "SubSeven", "risk": "HIGH"},
+    1234: {"name": "Kuang2/Virus", "risk": "HIGH"},
+    9001: {"name": "Tor ORPort", "risk": "MEDIUM"},
+    9050: {"name": "Tor SOCKS", "risk": "MEDIUM"},
+    6667: {"name": "IRC (Common Bot)", "risk": "MEDIUM"},
+    6891: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6892: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6893: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6894: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6895: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6896: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6897: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6898: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6899: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6900: {"name": "P2P/ZeuS", "risk": "HIGH"},
+    6901: {"name": "P2P/ZeuS", "risk": "HIGH"},
 }
 
 # Países de alto riesgo
 HIGH_RISK_COUNTRIES = {
-    'CN',  # China
-    'RU',  # Russia
-    'KP',  # North Korea
-    'IR',  # Iran
-    'SY',  # Syria
-    'CU',  # Cuba
-    'VN',  # Vietnam
-    'BY',  # Belarus
-    'MM',  # Myanmar
-    'VE',  # Venezuela
+    "CN",  # China
+    "RU",  # Russia
+    "KP",  # North Korea
+    "IR",  # Iran
+    "SY",  # Syria
+    "CU",  # Cuba
+    "VN",  # Vietnam
+    "BY",  # Belarus
+    "MM",  # Myanmar
+    "VE",  # Venezuela
 }
 
 # Puertos sensibles que requieren atención
 SENSITIVE_PORTS = {
-    22: 'SSH',
-    23: 'Telnet',
-    3389: 'RDP',
-    5900: 'VNC',
-    445: 'SMB',
-    139: 'NetBIOS',
-    135: 'RPC',
-    1433: 'MSSQL',
-    3306: 'MySQL',
-    5432: 'PostgreSQL',
-    27017: 'MongoDB',
-    6379: 'Redis',
-    9200: 'Elasticsearch',
+    22: "SSH",
+    23: "Telnet",
+    3389: "RDP",
+    5900: "VNC",
+    445: "SMB",
+    139: "NetBIOS",
+    135: "RPC",
+    1433: "MSSQL",
+    3306: "MySQL",
+    5432: "PostgreSQL",
+    27017: "MongoDB",
+    6379: "Redis",
+    9200: "Elasticsearch",
 }
 
 
@@ -140,16 +140,16 @@ class NetworkTracker:
             dst_ip = packet[IP].dst
 
             # Determinar protocolo y puerto
-            protocol = 'OTHER'
+            protocol = "OTHER"
             src_port = None
             dst_port = None
 
             if TCP in packet:
-                protocol = 'TCP'
+                protocol = "TCP"
                 src_port = packet[TCP].sport
                 dst_port = packet[TCP].dport
             elif UDP in packet:
-                protocol = 'UDP'
+                protocol = "UDP"
                 src_port = packet[UDP].sport
                 dst_port = packet[UDP].dport
 
@@ -177,7 +177,7 @@ class NetworkTracker:
             bool: True si es IP privada/reservada
         """
         try:
-            parts = ip.split('.')
+            parts = ip.split(".")
             if len(parts) != 4:
                 return True
 
@@ -217,52 +217,58 @@ class NetworkTracker:
             dict: Información de amenazas encontradas
         """
         threats = []
-        risk_level = 'LOW'
+        risk_level = "LOW"
         ports = self.ports_by_ip.get(ip, {})
 
         # Verificar puertos maliciosos conocidos
         for port in ports:
             if port in MALICIOUS_PORTS:
                 threat = MALICIOUS_PORTS[port]
-                threats.append({
-                    'type': 'MALICIOUS_PORT',
-                    'port': port,
-                    'name': threat['name'],
-                    'risk': threat['risk'],
-                    'description': f"Puerto {port} asociado con {threat['name']}"
-                })
+                threats.append(
+                    {
+                        "type": "MALICIOUS_PORT",
+                        "port": port,
+                        "name": threat["name"],
+                        "risk": threat["risk"],
+                        "description": f"Puerto {port} asociado con {threat['name']}",
+                    }
+                )
 
         # Verificar puertos sensibles
         for port in ports:
             if port in SENSITIVE_PORTS:
-                threats.append({
-                    'type': 'SENSITIVE_PORT',
-                    'port': port,
-                    'name': SENSITIVE_PORTS[port],
-                    'risk': 'MEDIUM',
-                    'description': f"Conexión a puerto sensible: {SENSITIVE_PORTS[port]} ({port})"
-                })
+                threats.append(
+                    {
+                        "type": "SENSITIVE_PORT",
+                        "port": port,
+                        "name": SENSITIVE_PORTS[port],
+                        "risk": "MEDIUM",
+                        "description": f"Conexión a puerto sensible: {SENSITIVE_PORTS[port]} ({port})",
+                    }
+                )
 
         # Verificar país de alto riesgo
-        if geo_data_item and geo_data_item.get('country_code') in HIGH_RISK_COUNTRIES:
-            threats.append({
-                'type': 'HIGH_RISK_COUNTRY',
-                'country': geo_data_item.get('country'),
-                'country_code': geo_data_item.get('country_code'),
-                'risk': 'HIGH',
-                'description': f"Conexión a país de alto riesgo: {geo_data_item.get('country')}"
-            })
+        if geo_data_item and geo_data_item.get("country_code") in HIGH_RISK_COUNTRIES:
+            threats.append(
+                {
+                    "type": "HIGH_RISK_COUNTRY",
+                    "country": geo_data_item.get("country"),
+                    "country_code": geo_data_item.get("country_code"),
+                    "risk": "HIGH",
+                    "description": f"Conexión a país de alto riesgo: {geo_data_item.get('country')}",
+                }
+            )
 
         # Determinar nivel de riesgo overall
-        if any(t['risk'] == 'HIGH' for t in threats):
-            risk_level = 'HIGH'
-        elif any(t['risk'] == 'MEDIUM' for t in threats):
-            risk_level = 'MEDIUM'
+        if any(t["risk"] == "HIGH" for t in threats):
+            risk_level = "HIGH"
+        elif any(t["risk"] == "MEDIUM" for t in threats):
+            risk_level = "MEDIUM"
 
         return {
-            'threats': threats,
-            'risk_level': risk_level,
-            'is_suspicious': len(threats) > 0
+            "threats": threats,
+            "risk_level": risk_level,
+            "is_suspicious": len(threats) > 0,
         }
 
     def analyze_all_threats(self, geo_data):
@@ -276,35 +282,37 @@ class NetworkTracker:
             dict: Análisis completo de amenazas
         """
         threat_summary = {
-            'total_ips': len(geo_data),
-            'suspicious_ips': 0,
-            'high_risk': 0,
-            'medium_risk': 0,
-            'low_risk': 0,
-            'threat_details': []
+            "total_ips": len(geo_data),
+            "suspicious_ips": 0,
+            "high_risk": 0,
+            "medium_risk": 0,
+            "low_risk": 0,
+            "threat_details": [],
         }
 
         # Crear diccionario deolocalización por IP ge
-        geo_by_ip = {d['ip']: d for d in geo_data if d}
+        geo_by_ip = {d["ip"]: d for d in geo_data if d}
 
         for ip in self.ips_found:
             geo_item = geo_by_ip.get(ip)
             threat_analysis = self._analyze_threats(ip, geo_item)
 
-            if threat_analysis['is_suspicious']:
-                threat_summary['suspicious_ips'] += 1
-                threat_summary['threat_details'].append({
-                    'ip': ip,
-                    'risk_level': threat_analysis['risk_level'],
-                    'threats': threat_analysis['threats']
-                })
+            if threat_analysis["is_suspicious"]:
+                threat_summary["suspicious_ips"] += 1
+                threat_summary["threat_details"].append(
+                    {
+                        "ip": ip,
+                        "risk_level": threat_analysis["risk_level"],
+                        "threats": threat_analysis["threats"],
+                    }
+                )
 
-                if threat_analysis['risk_level'] == 'HIGH':
-                    threat_summary['high_risk'] += 1
-                elif threat_analysis['risk_level'] == 'MEDIUM':
-                    threat_summary['medium_risk'] += 1
+                if threat_analysis["risk_level"] == "HIGH":
+                    threat_summary["high_risk"] += 1
+                elif threat_analysis["risk_level"] == "MEDIUM":
+                    threat_summary["medium_risk"] += 1
                 else:
-                    threat_summary['low_risk'] += 1
+                    threat_summary["low_risk"] += 1
 
         return threat_summary
 
@@ -325,13 +333,13 @@ class NetworkTracker:
         for port in ports:
             if port in SERVICE_COLORS:
                 service = SERVICE_COLORS[port].copy()
-                service['port'] = port
+                service["port"] = port
                 return service
 
         # Si no hay puertos conocidos
         for port in ports:
             service = DEFAULT_SERVICE.copy()
-            service['port'] = port
+            service["port"] = port
             return service
 
         return DEFAULT_SERVICE.copy()
@@ -348,22 +356,22 @@ class NetworkTracker:
             dict: Información de geolocalización o None si falla
         """
         try:
-            response = requests.get(f"{GEO_API_URL}{ip}", timeout=5)
+            response = requests.get(f"{GEO_API_URL}/{ip}", timeout=5)
             if response.status_code == 200:
                 data = response.json()
-                if data.get('status') == 'success':
+                if data.get("status") == "success":
                     return {
-                        'ip': ip,
-                        'country': data.get('country', 'Unknown'),
-                        'country_code': data.get('countryCode', 'Unknown'),
-                        'city': data.get('city', 'Unknown'),
-                        'region': data.get('regionName', 'Unknown'),
-                        'lat': data.get('lat'),
-                        'lon': data.get('lon'),
-                        'isp': data.get('isp', 'Unknown'),
-                        'asn': data.get('as', 'Unknown'),
-                        'org': data.get('org', 'Unknown'),
-                        'timezone': data.get('timezone', 'Unknown')
+                        "ip": ip,
+                        "country": data.get("country", "Unknown"),
+                        "country_code": data.get("countryCode", "Unknown"),
+                        "city": data.get("city", "Unknown"),
+                        "region": data.get("regionName", "Unknown"),
+                        "lat": data.get("lat"),
+                        "lon": data.get("lon"),
+                        "isp": data.get("isp", "Unknown"),
+                        "asn": data.get("as", "Unknown"),
+                        "org": data.get("org", "Unknown"),
+                        "timezone": data.get("timezone", "Unknown"),
                     }
         except requests.RequestException as e:
             print(f"Error consultando IP {ip}: {e}")
@@ -383,11 +391,7 @@ class NetworkTracker:
             folium.Map: Objeto mapa de Folium
         """
         # Crear mapa centrado en tu ubicación
-        m = folium.Map(
-            location=[MY_LAT, MY_LON],
-            zoom_start=3,
-            tiles='OpenStreetMap'
-        )
+        m = folium.Map(location=[MY_LAT, MY_LON], zoom_start=3, tiles="OpenStreetMap")
 
         # Preparar datos para el mapa de calor
         heat_data = []
@@ -395,9 +399,9 @@ class NetworkTracker:
         location_counts = defaultdict(int)
 
         for data in geo_data:
-            if data and data['lat'] and data['lon']:
+            if data and data["lat"] and data["lon"]:
                 # Acumular peso por ubicación
-                key = (data['lat'], data['lon'])
+                key = (data["lat"], data["lon"])
                 location_counts[key] += 1
 
         # Crear lista para heatmap con peso
@@ -413,12 +417,18 @@ class NetworkTracker:
                 max_val=max_count,
                 radius=25,
                 blur=15,
-                gradient={0.2: 'blue', 0.4: 'lime', 0.6: 'yellow', 0.8: 'orange', 1: 'red'}
+                gradient={
+                    0.2: "blue",
+                    0.4: "lime",
+                    0.6: "yellow",
+                    0.8: "orange",
+                    1: "red",
+                },
             )
             heat_layer.add_to(m)
 
         # Leyenda de colores y mapa de calor
-        legend_html = '''
+        legend_html = """
         <div style="position: fixed; bottom: 50px; left: 50px; z-index: 1000; 
                     background-color: white; padding: 10px; border: 2px solid gray;
                     border-radius: 5px; font-size: 12px;">
@@ -441,49 +451,57 @@ class NetworkTracker:
             <span style="color:lime">●</span> Baja<br>
             <span style="color:blue">●</span> Muy baja
         </div>
-        '''
+        """
         m.get_root().html.add_child(folium.Element(legend_html))
 
         # Agregar marcador para tu ubicación
         folium.Marker(
             location=[MY_LAT, MY_LON],
             popup=f"<b>Tu Ubicación</b><br>Lat: {MY_LAT}<br>Lon: {MY_LON}",
-            icon=folium.Icon(color='red', icon='home', prefix='fa'),
-            tooltip="Mi ubicación"
+            icon=folium.Icon(color="red", icon="home", prefix="fa"),
+            tooltip="Mi ubicación",
         ).add_to(m)
 
         # Analizar amenazas
         threat_analysis = self.analyze_all_threats(geo_data)
-        threat_by_ip = {t['ip']: t for t in threat_analysis['threat_details']}
+        threat_by_ip = {t["ip"]: t for t in threat_analysis["threat_details"]}
 
         # Agregar marcador para cada IP geolocalizada
         for data in geo_data:
-            if data and data['lat'] and data['lon']:
+            if data and data["lat"] and data["lon"]:
                 # Obtener info del servicio
-                service = self._get_service_info(data['ip'])
+                service = self._get_service_info(data["ip"])
 
                 # Verificar amenazas
-                threat_info = threat_by_ip.get(data['ip'])
+                threat_info = threat_by_ip.get(data["ip"])
                 if threat_info:
-                    risk_color = 'darkred' if threat_info['risk_level'] == 'HIGH' else 'orange'
-                    risk_icon = 'exclamation-triangle' if threat_info['risk_level'] == 'HIGH' else 'exclamation-circle'
+                    risk_color = (
+                        "darkred" if threat_info["risk_level"] == "HIGH" else "orange"
+                    )
+                    risk_icon = (
+                        "exclamation-triangle"
+                        if threat_info["risk_level"] == "HIGH"
+                        else "exclamation-circle"
+                    )
 
-                    threats_html = "<hr><b style='color:red'>⚠️ AMENAZAS DETECTADAS</b><br>"
-                    for threat in threat_info['threats']:
+                    threats_html = (
+                        "<hr><b style='color:red'>⚠️ AMENAZAS DETECTADAS</b><br>"
+                    )
+                    for threat in threat_info["threats"]:
                         threats_html += f"<span style='color:red'>• {threat['description']}</span><br>"
 
                     popup_html = f"""
-                    <b>IP:</b> {data['ip']}<br>
-                    <b>País:</b> {data['country']}<br>
-                    <b>Ciudad:</b> {data['city']}<br>
-                    <b>Región:</b> {data['region']}<br>
-                    <b>Propietario/Org:</b> {data.get('org', 'Unknown')}<br>
-                    <b>ISP:</b> {data['isp']}<br>
-                    <b>ASN:</b> {data['asn']}<br>
-                    <b>Zona Horaria:</b> {data.get('timezone', 'Unknown')}<br>
+                    <b>IP:</b> {data["ip"]}<br>
+                    <b>País:</b> {data["country"]}<br>
+                    <b>Ciudad:</b> {data["city"]}<br>
+                    <b>Región:</b> {data["region"]}<br>
+                    <b>Propietario/Org:</b> {data.get("org", "Unknown")}<br>
+                    <b>ISP:</b> {data["isp"]}<br>
+                    <b>ASN:</b> {data["asn"]}<br>
+                    <b>Zona Horaria:</b> {data.get("timezone", "Unknown")}<br>
                     <hr>
-                    <b>Servicio:</b> {service['name']}<br>
-                    <b>Puerto:</b> {service.get('port', 'N/A')}
+                    <b>Servicio:</b> {service["name"]}<br>
+                    <b>Puerto:</b> {service.get("port", "N/A")}
                     {threats_html}
                     """
 
@@ -491,40 +509,39 @@ class NetworkTracker:
                     marker_icon = risk_icon
                 else:
                     popup_html = f"""
-                    <b>IP:</b> {data['ip']}<br>
-                    <b>País:</b> {data['country']}<br>
-                    <b>Ciudad:</b> {data['city']}<br>
-                    <b>Región:</b> {data['region']}<br>
-                    <b>Propietario/Org:</b> {data.get('org', 'Unknown')}<br>
-                    <b>ISP:</b> {data['isp']}<br>
-                    <b>ASN:</b> {data['asn']}<br>
-                    <b>Zona Horaria:</b> {data.get('timezone', 'Unknown')}<br>
+                    <b>IP:</b> {data["ip"]}<br>
+                    <b>País:</b> {data["country"]}<br>
+                    <b>Ciudad:</b> {data["city"]}<br>
+                    <b>Región:</b> {data["region"]}<br>
+                    <b>Propietario/Org:</b> {data.get("org", "Unknown")}<br>
+                    <b>ISP:</b> {data["isp"]}<br>
+                    <b>ASN:</b> {data["asn"]}<br>
+                    <b>Zona Horaria:</b> {data.get("timezone", "Unknown")}<br>
                     <hr>
-                    <b>Servicio:</b> {service['name']}<br>
-                    <b>Puerto:</b> {service.get('port', 'N/A')}
+                    <b>Servicio:</b> {service["name"]}<br>
+                    <b>Puerto:</b> {service.get("port", "N/A")}
                     <br><b style='color:green'>✓ Sin amenazas detectadas</b>
                     """
 
-                    marker_color = service['color']
-                    marker_icon = service['icon']
+                    marker_color = service["color"]
+                    marker_icon = service["icon"]
 
                 folium.Marker(
-                    location=[data['lat'], data['lon']],
+                    location=[data["lat"], data["lon"]],
                     popup=popup_html,
-                    icon=folium.Icon(color=marker_color, icon=marker_icon, prefix='fa'),
-                    tooltip=f"{service['name']} - {data['ip']}"
+                    icon=folium.Icon(color=marker_color, icon=marker_icon, prefix="fa"),
+                    tooltip=f"{service['name']} - {data['ip']}",
                 ).add_to(m)
 
                 # Línea de conexión siempre visible
-                line_color = service['color']
+                line_color = service["color"]
                 if threat_info:
-                    line_color = 'darkred' if threat_info['risk_level'] == 'HIGH' else 'orange'
+                    line_color = (
+                        "darkred" if threat_info["risk_level"] == "HIGH" else "orange"
+                    )
 
                 folium.PolyLine(
-                    locations=[
-                        [MY_LAT, MY_LON],
-                        [data['lat'], data['lon']]
-                    ],
+                    locations=[[MY_LAT, MY_LON], [data["lat"], data["lon"]]],
                     color=line_color,
                     weight=3 if threat_info else 2,
                     opacity=0.8 if threat_info else 0.7,
@@ -566,7 +583,7 @@ def main():
             prn=tracker.process_packet,
             count=PACKET_COUNT,
             timeout=CAPTURE_DURATION,
-            store=0
+            store=0,
         )
     except KeyboardInterrupt:
         print("\n[!] Captura interrumpida por el usuario")
@@ -584,13 +601,15 @@ def main():
     geo_data = []
 
     for i, ip in enumerate(tracker.ips_found, 1):
-        print(f"    [{i}/{len(tracker.ips_found)}] Consultando {ip}...", end='\r')
+        print(f"    [{i}/{len(tracker.ips_found)}] Consultando {ip}...", end="\r")
 
         geo = tracker.get_geolocation(ip)
         if geo:
             geo_data.append(geo)
             service = tracker._get_service_info(ip)
-            print(f"    [{i}/{len(tracker.ips_found)}] {ip} -> {geo.get('country', 'Unknown')} ({service['name']})")
+            print(
+                f"    [{i}/{len(tracker.ips_found)}] {ip} -> {geo.get('country', 'Unknown')} ({service['name']})"
+            )
 
         # Respetar límite de la API (45 req/min)
         time.sleep(1.5)
@@ -614,11 +633,11 @@ def main():
     print(f"  - Medio riesgo: {threat_summary['medium_risk']}")
     print(f"  - Bajo riesgo: {threat_summary['low_risk']}")
 
-    if threat_summary['threat_details']:
+    if threat_summary["threat_details"]:
         print("\n[!] DETALLES DE AMENAZAS:")
-        for threat in threat_summary['threat_details']:
+        for threat in threat_summary["threat_details"]:
             print(f"\n  IP: {threat['ip']} [RIESGO: {threat['risk_level']}]")
-            for t in threat['threats']:
+            for t in threat["threats"]:
                 print(f"    - {t['description']}")
     else:
         print("\n[✓] No se detectaron amenazas conocidas")

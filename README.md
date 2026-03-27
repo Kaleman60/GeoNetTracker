@@ -62,21 +62,39 @@ MY_LON = -3.703790  # Longitud de tu ubicación
 
 ## Uso
 
-### Orden de ejecución completo
+### Pasos para ejecutar el proyecto
 
+#### 1. Crear entorno virtual (solo la primera vez)
 ```bash
-# 1. Instalar dependencias (solo una vez)
-pip install --break-system-packages scapy folium requests
+python3 -m venv venv
+```
 
-# 2. Configurar tu ubicación (editar main.py)
+#### 2. Activar el entorno virtual
+```bash
+source venv/bin/activate
+```
+
+#### 3. Instalar dependencias (solo la primera vez)
+```bash
+pip install scapy folium requests
+```
+
+#### 4. Configurar tu ubicación
+Edita el archivo `main.py` y ajusta las coordenadas:
+
+```python
 MY_LAT = 40.416775   # Tu latitud
 MY_LON = -3.703790   # Tu longitud
+```
 
-# 3. Ejecutar el script
+#### 5. Ejecutar el script (método rápido)
+```bash
+./run.sh
+```
+
+#### 6. Ejecutar manualmente
+```bash
 sudo python3 main.py
-
-# 4. Ver el mapa generado
-firefox network_map.html
 ```
 
 ### Método alternativo (con permisos persistentes)
@@ -88,22 +106,24 @@ sudo chmod +x main.py
 ./main.py
 ```
 
-El script:
-1. Capturará tráfico de red saliente durante ~60 segundos
-2. Extraerá IPs únicas del tráfico
-3. Consultará la geolocalización de cada IP
-4. Generará un archivo `network_map.html`
-5. Abrirá automáticamente el mapa en tu navegador
+### Ver el mapa generado
 
-### Ver el mapa
-
-Abre el archivo generado en tu navegador:
+El mapa se abre automáticamente, pero también puedes abrirlo manualmente:
 
 ```bash
 firefox network_map.html
 # o
 google-chrome network_map.html
 ```
+
+### Qué hace el script
+
+1. Captura tráfico de red saliente durante ~60 segundos
+2. Extrae IPs únicas del tráfico
+3. Consulta la geolocalización de cada IP
+4. Analiza amenazas potenciales
+5. Genera un archivo `network_map.html`
+6. Abre automáticamente el mapa en tu navegador
 
 ## Preguntas Frecuentes
 
